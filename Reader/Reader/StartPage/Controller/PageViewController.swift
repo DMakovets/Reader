@@ -9,12 +9,12 @@
 import UIKit
 
 class PageViewController: UIPageViewController {
-
+    
     let boldTextContent = ["Книги ePub","Шрифты и настройки","Любимые цитаты","Чтение офлайн"]
     let normalTextContent = ["Загружай книги в формате ePub",
-        "Меняй шрифты, яркость на экрана и режим(дневной, ночной)",
-        "Сохраняй понравившееся цитаты в избранное и перечитывай их в любое время",
-        "Читай книги когда угодно без доступа в интернет"]
+                             "Меняй шрифты, яркость на экрана и режим(дневной, ночной)",
+                             "Сохраняй понравившееся цитаты в избранное и перечитывай их в любое время",
+                             "Читай книги когда угодно без доступа в интернет"]
     let imageContent = [
         UIImage(named: "landing1.png"),
         UIImage(named: "landing2.png"),
@@ -23,7 +23,7 @@ class PageViewController: UIPageViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         
         dataSource = self
         
@@ -33,6 +33,8 @@ class PageViewController: UIPageViewController {
     }
     
     func showViewControllerAtIndex(_ index: Int) -> ContentViewController? {
+        
+        let storyboard = UIStoryboard(name: "StartPage", bundle: nil) 
         guard index >= 0 else { return nil }
         guard index < boldTextContent.count else {
             let userDefaults = UserDefaults.standard
@@ -41,7 +43,7 @@ class PageViewController: UIPageViewController {
             return nil
             
         }
-        guard let contentViewController = storyboard?.instantiateViewController(withIdentifier: "ContentViewController") as? ContentViewController else {return nil}
+        guard let contentViewController = storyboard.instantiateViewController(withIdentifier: "ContentViewController") as? ContentViewController else {return nil}
         
         contentViewController.boldText = boldTextContent[index]
         contentViewController.normalText = normalTextContent[index]
@@ -51,7 +53,7 @@ class PageViewController: UIPageViewController {
         
         return contentViewController 
     }
-
+    
 }
 
 extension PageViewController: UIPageViewControllerDataSource {

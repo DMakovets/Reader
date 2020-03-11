@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15508"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Content View Controller-->
+        <scene sceneID="p11-Hs-Rq5">
+            <objects>
+                <viewController storyboardIdentifier="ContentViewController" id="nFs-Va-v1s" customClass="ContentViewController" customModule="Reader" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="GEp-sA-DE1">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="TgV-Xa-ED8">
+                                <rect key="frame" x="187.5" y="842" width="39" height="10"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="TgV-Xa-ED8" secondAttribute="height" multiplier="39:10" id="0No-Xe-r75"/>
+                                    <constraint firstAttribute="height" constant="10" id="Kft-AV-gHj"/>
+                                </constraints>
+                                <color key="pageIndicatorTintColor" systemColor="opaqueSeparatorColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="currentPageIndicatorTintColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </pageControl>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="landing2" translatesAutoresizingMaskIntoConstraints="NO" id="apW-QB-ArQ">
+                                <rect key="frame" x="82" y="144" width="250" height="250"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="apW-QB-ArQ" secondAttribute="height" multiplier="1:1" id="HZJ-6Q-yRg"/>
+                                    <constraint firstAttribute="width" constant="250" id="TmR-KG-Woz"/>
+                                    <constraint firstAttribute="height" constant="250" id="bHf-BP-OWp"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Загружай книги в формате" textAlignment="center" lineBreakMode="clip" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7F6-ct-puX">
+                                <rect key="frame" x="82" y="480" width="250" height="20.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="250" id="P1k-59-tFr"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Книги в ePub" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nDo-HU-x1j">
+                                <rect key="frame" x="82" y="454" width="250" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="jg9-ES-dpq"/>
+                                    <constraint firstAttribute="width" constant="250" id="kKF-le-pXc"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="HXh-CY-6dU" firstAttribute="bottom" secondItem="TgV-Xa-ED8" secondAttribute="bottom" constant="10" id="82D-zT-ink"/>
+                            <constraint firstItem="nDo-HU-x1j" firstAttribute="centerX" secondItem="GEp-sA-DE1" secondAttribute="centerX" id="TZX-su-Z5Z"/>
+                            <constraint firstItem="apW-QB-ArQ" firstAttribute="top" secondItem="HXh-CY-6dU" secondAttribute="top" constant="100" id="Tjf-pc-eGZ"/>
+                            <constraint firstItem="TgV-Xa-ED8" firstAttribute="centerX" secondItem="GEp-sA-DE1" secondAttribute="centerX" id="iYh-8H-Ggs"/>
+                            <constraint firstItem="7F6-ct-puX" firstAttribute="centerX" secondItem="GEp-sA-DE1" secondAttribute="centerX" id="jvG-jW-In2"/>
+                            <constraint firstItem="apW-QB-ArQ" firstAttribute="centerX" secondItem="GEp-sA-DE1" secondAttribute="centerX" id="oXe-Y3-Yem"/>
+                            <constraint firstItem="7F6-ct-puX" firstAttribute="top" secondItem="nDo-HU-x1j" secondAttribute="bottom" constant="5" id="t9U-oh-q6L"/>
+                            <constraint firstItem="nDo-HU-x1j" firstAttribute="top" secondItem="apW-QB-ArQ" secondAttribute="bottom" constant="60" id="trZ-Qb-lkh"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="HXh-CY-6dU"/>
+                    </view>
+                    <connections>
+                        <outlet property="boldLabel" destination="nDo-HU-x1j" id="b4t-pX-LHD"/>
+                        <outlet property="imageLabel" destination="apW-QB-ArQ" id="faJ-aq-kKy"/>
+                        <outlet property="normalLabel" destination="7F6-ct-puX" id="mvX-RF-GKy"/>
+                        <outlet property="pageControl" destination="TgV-Xa-ED8" id="Zpl-LC-F85"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="L2j-MZ-91y" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1788" y="131"/>
+        </scene>
+        <!--Page View Controller-->
+        <scene sceneID="P1U-uU-HjN">
+            <objects>
+                <pageViewController storyboardIdentifier="PageViewController" autoresizesArchivedViewToFullSize="NO" modalTransitionStyle="crossDissolve" modalPresentationStyle="fullScreen" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="min" id="LH0-3b-QhS" customClass="PageViewController" customModule="Reader" customModuleProvider="target" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="g2B-mT-1tN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1013" y="131"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="landing2" width="224" height="202.5"/>
+    </resources>
+</document>
