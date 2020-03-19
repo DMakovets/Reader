@@ -1,21 +1,22 @@
 //
-//  NowReadingDataSource.swift
-//  KotBook
+//  RecentlyReadingDataSource.swift
+//  Reader
 //
-//  Created by Oleg Marchik on 1/2/20.
-//  Copyright © 2020 kotiki. All rights reserved.
+//  Created by Denis Makovets on 3/17/20.
+//  Copyright © 2020 Denis Makovets. All rights reserved.
 //
 
 import UIKit
 import RealmSwift
 
-final class NowReadingDataSource: NSObject, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+final class RecentlyReadingDataSource: NSObject, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
-    var didSelectItem: ((_ book: BookEntity) -> Void)?
+    var didSelectItem: ((_ book: BookModel) -> Void)?
     
-    let books:  Results<BookEntity> = {
+    
+    let books:  Results<BookModel> = {
         let realm = try! Realm()
-        return realm.objects(BookEntity.self).sorted(byKeyPath: "lastReadDate")
+        return realm.objects(BookModel.self).sorted(byKeyPath: "addedDate")
     }()
     
     
@@ -24,18 +25,20 @@ final class NowReadingDataSource: NSObject, UICollectionViewDataSource, UICollec
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "default", for: indexPath) as! SmallBookCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "default", for: indexPath) as! BigBookCollectionViewCell
         let book = books[indexPath.item]
-        cell.nameLabel.text = book.name
-        cell.authorLabel.text = book.author
+        cell.bigNameLabel.text = book.name
+        cell.bigAuthorLabel.text = book.author
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-         CGSize(width: 257, height: 150)
-    }
-    
+       CGSize(width: 257, height: 150)
+   }
+
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         didSelectItem?(books[indexPath.item])
+        
     }
+
 }
