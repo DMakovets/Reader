@@ -25,23 +25,21 @@ class ViewController: UIViewController {
         self.navigationController?.isNavigationBarHidden = false
     }
     override func viewDidAppear(_ animated: Bool) {
-          super.viewDidAppear(animated)
-            // startPresentation()
-      }
-
-    
-//    func startPresentation(){
-//
-//          let userDefaults = UserDefaults.standard
-//          let presentationWasViewed = userDefaults.bool(forKey: "presentationWasViewed")
-//          if presentationWasViewed ==  false {
-//              let storyboard = UIStoryboard(name: "StartPage", bundle: nil)
-//              if let pageViewController = storyboard.instantiateViewController(withIdentifier: "PageViewController") as? PageViewController {
-//                  present(pageViewController, animated: false, completion: nil)
-//              }
-//          }
-//      }
-    
+        super.viewDidAppear(animated)
+        startPresentation()
+    }
+        
+    func startPresentation(){
+        
+        let userDefaults = UserDefaults.standard
+        let presentationWasViewed = userDefaults.bool(forKey: "presentationWasViewed")
+        if presentationWasViewed ==  false {
+            let storyboard = UIStoryboard(name: "StartPage", bundle: nil)
+            if let pageViewController = storyboard.instantiateViewController(withIdentifier: "PageViewController") as? PageViewController {
+                present(pageViewController, animated: false, completion: nil)
+            }
+        }
+    }
     @IBAction func downloadBook(_ sender: Any) {
         let documentPicker = UIDocumentPickerViewController(documentTypes: [(kUTTypeItem as String)], in: .import)
         
@@ -73,7 +71,7 @@ extension ViewController: UIDocumentPickerDelegate {
                 BookManager.saveBookInDB(newBook)
                 print("Copied file!")
                 let vc = storyboard?.instantiateViewController(withIdentifier: "MainVC") as! MainViewController  
-                self.navigationController?.pushViewController(vc, animated: false)
+                self.navigationController?.pushViewController(vc, animated: true)
             }
             catch {
                 print("Error: \(error)")

@@ -23,12 +23,9 @@ class PageViewController: UIPageViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
         dataSource = self
-        
         if let contentViewController = showViewControllerAtIndex(0){
-            setViewControllers([contentViewController], direction: .forward, animated: true, completion: nil )
+            setViewControllers([contentViewController], direction: .forward, animated: true, completion: nil)
         }
     }
     
@@ -40,17 +37,17 @@ class PageViewController: UIPageViewController {
             let userDefaults = UserDefaults.standard
             userDefaults.set(true, forKey: "presentationWasViewed")
             dismiss(animated: true, completion: nil)
+//            let vc = storyboard.instantiateViewController(withIdentifier: "noBookVC") as! ViewController
+//            self.navigationController?.pushViewController(vc, animated: false)
             return nil
-            
         }
-        guard let contentViewController = storyboard.instantiateViewController(withIdentifier: "ContentViewController") as? ContentViewController else {return nil}
         
+        guard let contentViewController = storyboard.instantiateViewController(withIdentifier: "ContentViewController") as? ContentViewController else {return nil}
         contentViewController.boldText = boldTextContent[index]
         contentViewController.normalText = normalTextContent[index]
         contentViewController.image = imageContent[index]!
         contentViewController.currentPage = index
         contentViewController.numberOfPages = boldTextContent.count
-        
         return contentViewController 
     }
     
@@ -59,17 +56,14 @@ class PageViewController: UIPageViewController {
 extension PageViewController: UIPageViewControllerDataSource {
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        
         var pageNumber = (viewController as! ContentViewController).currentPage
         pageNumber -= 1
-        
         return showViewControllerAtIndex(pageNumber)
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
         var pageNumber = (viewController as! ContentViewController).currentPage
         pageNumber += 1
-        
         return showViewControllerAtIndex(pageNumber)
     }
     
